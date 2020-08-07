@@ -51,8 +51,9 @@ let overlays = {
 // which layers are visible.
 L.control.layers(baseMaps, overlays).addTo(map);
 
+let url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 // retrive earthquake GeoJSON data
-d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function(data) {
+d3.json(url).then(function(data) {
     console.log(data);
     L.geoJson(data, {
 		// We turn each feature into a circleMarker on the map.
@@ -107,7 +108,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     }
 
     // adding techtonic plates
-    let url = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json";
+    url = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json";
     d3.json(url).then(function (techtonicPlateData) {
         console.log(techtonicPlateData);
         L.geoJson(techtonicPlateData, {
